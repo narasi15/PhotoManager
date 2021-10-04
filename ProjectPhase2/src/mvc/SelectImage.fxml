@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@SelectImageStyleSheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mvc.SelectImageViewController">
+    <children>
+        <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="TagIT">
+                    <items>
+                        <MenuItem fx:id="closeButton" mnemonicParsing="false" onAction="#closeWindow" text="Close" />
+                    </items>
+                </Menu>
+            <Menu mnemonicParsing="false" text="Options">
+              <items>
+                <MenuItem fx:id="manageAllTagsButton" mnemonicParsing="false" onAction="#openManageTagWindow" text="Manage All Tags" />
+                  <MenuItem fx:id="viewHistoryButton" mnemonicParsing="false" onAction="#openHistoryWindow" text="View Log History" />
+              </items>
+            </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="helpButton" onAction="#openHelp" mnemonicParsing="false" text="TagIT Help" />
+                        <MenuItem fx:id="aboutButton" onAction="#openAbout" mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ImageView fx:id="imageToBeTagged" fitHeight="341.0" fitWidth="642.0" layoutX="18.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="88.0" />
+        <ListView fx:id="allTagsUsed" layoutX="680.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="200.0" />
+        <TextField fx:id="userInputtedTag" layoutX="463.0" layoutY="493.0" prefHeight="27.0" prefWidth="197.0" />
+        <ListView fx:id="allTagsForCurrPic" layoutX="25.0" layoutY="473.0" orientation="HORIZONTAL" prefHeight="50.0" prefWidth="383.0" />
+      <Button fx:id="grayScale" layoutX="177.0" layoutY="556.0" mnemonicParsing="false" onAction="#filterImage" text="Gray Scale" />
+      <Button fx:id="defaultColour" layoutX="23.0" layoutY="555.0" mnemonicParsing="false" onAction="#filterImage" prefHeight="24.0" prefWidth="67.0" text="Default" />
+      <Button fx:id="setFilterButton" layoutX="347.0" layoutY="555.0" mnemonicParsing="false" onAction="#setFilter" text="Set Filter" />
+      <Button fx:id="sepia" layoutX="275.0" layoutY="555.0" mnemonicParsing="false" onAction="#filterImage" text="Sepia" />
+      <HBox layoutY="29.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+              <Button id="backButton" fx:id="backButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="78.0" text="&lt;--" textAlignment="CENTER" wrapText="true" />
+              <Button id="openEnclosingFolder" fx:id="openEnclosingFolder" mnemonicParsing="false" onAction="#openFolder" prefHeight="40.0" prefWidth="156.0" text="Open in Enclosing Folder" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Helvetica Neue" size="12.0" />
+               </font>
+            </Button>
+              <Button id="changeToPastTags" fx:id="changeToPastTags" alignment="CENTER" graphicTextGap="1.0" mnemonicParsing="false" onAction="#goToAllVersionsView" prefHeight="40.0" prefWidth="180.0" text="Choose From Past Set of Tags" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Helvetica Neue" size="12.0" />
+               </font>
+            </Button>
+              <Button id="changeLocation" fx:id="changeLocation" mnemonicParsing="false" onAction="#changeImageLocation" prefHeight="40.0" prefWidth="146.0" text="Change Image Location" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Helvetica Neue" size="12.0" />
+               </font>
+            </Button>
+            <Button id="changeLocation" fx:id="stripAllTags" mnemonicParsing="false" onAction="#stripAllNames" prefHeight="40.0" prefWidth="146.0" text="Strip All Tags" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Helvetica Neue" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label layoutX="444.0" layoutY="502.0" text="\@" wrapText="true">
+         <font>
+            <Font name="Helvetica Neue" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="inverse" layoutX="102.0" layoutY="555.0" mnemonicParsing="false" onAction="#filterImage" prefHeight="23.0" prefWidth="67.0" text="Inverse " />
+        <Button fx:id="addTag" layoutX="408.0" layoutY="473.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#enterTagAction" prefHeight="25.0" prefWidth="25.0" wrapText="true">
+         <graphic>
+            <SVGPath content="M2 1 h1 v1 h1 v1 h-1 v1 h-1 v-1 h-1 v-1 h1 z" fill="WHITE" scaleX="4.0" scaleY="4.0" />
+         </graphic></Button>
+        <Button fx:id="removeTag" layoutX="408.0" layoutY="498.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeTagAction" prefHeight="25.0" prefWidth="25.0" wrapText="true">
+         <graphic>
+             <Rectangle id="Rectangle" fill="WHITE" height="3" width="18" x="4" y="11" />
+         </graphic>
+        </Button>
+      <Label layoutX="749.0" layoutY="80.0" text="All Tags">
+         <font>
+            <Font name="Helvetica Neue Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="450.0" text="Absolute Path:">
+         <font>
+            <Font name="Helvetica Neue" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="absolutePath" layoutX="144.0" layoutY="450.0" prefHeight="10.0" prefWidth="510.0" />
+    </children>
+</AnchorPane>
